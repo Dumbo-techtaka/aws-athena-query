@@ -1,0 +1,126 @@
+/* Container */
+.container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--vscode-editor-background);
+    color: var(--vscode-editor-foreground);
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--vscode-panel-border);
+    background-color: var(--vscode-editor-background);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--vscode-editor-foreground);
+}
+
+.logo svg {
+    color: #FF9900;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FF9900;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #FF9900;
+    animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+/* Loading Container */
+.loading-container {
+    padding: 20px;
+}
+
+/* Query Preview */
+.query-preview {
+    background-color: var(--vscode-input-background);
+    border: 1px solid var(--vscode-input-border);
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.query-preview-text {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    color: var(--vscode-editor-foreground);
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Loading Steps */
+.loading-steps {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.loading-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--vscode-descriptionForeground);
+}
+
+.step-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--vscode-panel-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--vscode-descriptionForeground);
+    flex-shrink: 0;
+}
+
+.step-icon.active {
+    background-color: #FF9900;
+    color: white;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.step-icon.completed {
+    background-color: #4CAF50;
+    color: white;
+} 

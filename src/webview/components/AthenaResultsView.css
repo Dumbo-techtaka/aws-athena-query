@@ -1,0 +1,295 @@
+.athena-results-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--vscode-editor-background);
+    color: var(--vscode-editor-foreground);
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--vscode-panel-border);
+    background-color: var(--vscode-editor-background);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--vscode-editor-foreground);
+}
+
+.logo svg {
+    color: #FF9900;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status.success {
+    color: #4CAF50;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+/* Query Info */
+.query-info {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+.query-header {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--vscode-editor-foreground);
+}
+
+.query-text {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    background-color: var(--vscode-input-background);
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--vscode-input-border);
+    color: var(--vscode-editor-foreground);
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    gap: 24px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--vscode-panel-border);
+    background-color: var(--vscode-editor-background);
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--vscode-descriptionForeground);
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--vscode-editor-foreground);
+}
+
+/* Results Container */
+.results-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.table-container {
+    flex: 1;
+    overflow: auto;
+    padding: 0 20px;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background-color: var(--vscode-editor-background);
+}
+
+.results-table th,
+.results-table td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--vscode-panel-border);
+    position: relative;
+}
+
+.results-table th {
+    background-color: var(--vscode-editor-background);
+    font-weight: 600;
+    color: var(--vscode-editor-foreground);
+    border-bottom: 2px solid var(--vscode-panel-border);
+    user-select: none;
+    cursor: col-resize;
+}
+
+.results-table th:hover {
+    background-color: var(--vscode-list-hoverBackground);
+}
+
+.index-column {
+    width: 60px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--vscode-descriptionForeground);
+    background-color: var(--vscode-editor-background);
+}
+
+.results-table tr.even {
+    background-color: var(--vscode-editor-background);
+}
+
+.results-table tr.odd {
+    background-color: var(--vscode-input-background);
+}
+
+.results-table tr:hover {
+    background-color: var(--vscode-list-hoverBackground);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-top: 1px solid var(--vscode-panel-border);
+    background-color: var(--vscode-editor-background);
+    gap: 16px;
+}
+
+.pagination-info {
+    font-size: 14px;
+    color: var(--vscode-descriptionForeground);
+    font-weight: 500;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.pagination-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--vscode-button-border);
+    background-color: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: var(--vscode-button-hoverBackground);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.download-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--vscode-button-border);
+    background-color: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.download-btn:hover:not(:disabled) {
+    background-color: var(--vscode-button-hoverBackground);
+}
+
+.download-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* No Results */
+.no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--vscode-descriptionForeground);
+}
+
+.no-results svg {
+    color: var(--vscode-descriptionForeground);
+    margin-bottom: 16px;
+}
+
+.no-results h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--vscode-editor-foreground);
+}
+
+.no-results p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .pagination {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .pagination-controls {
+        order: 1;
+    }
+    
+    .pagination-info {
+        order: 2;
+    }
+    
+    .download-btn {
+        order: 3;
+    }
+} 

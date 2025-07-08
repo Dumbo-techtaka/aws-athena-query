@@ -1,0 +1,149 @@
+{
+  "name": "athena-query",
+  "displayName": "AWS Athena Query",
+  "description": "Run AWS Athena queries directly from VS Code with pagination and CSV export",
+      "version": "0.1.63",
+  "publisher": "dumbokim",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dumbokim/athena-query.git"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:athena.query",
+    "onView:athena-schema-view"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "athena.query",
+        "title": "Athena: Run Query"
+      },
+      {
+        "command": "athena.refreshSchema",
+        "title": "Athena: Refresh Schema"
+      },
+      {
+        "command": "athena.queryTable",
+        "title": "Athena: Query Table"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "athena.query",
+        "key": "cmd+enter",
+        "mac": "cmd+enter",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "athena.query",
+        "key": "ctrl+enter",
+        "win": "ctrl+enter",
+        "linux": "ctrl+enter",
+        "when": "editorTextFocus"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "athena-schema-explorer",
+          "title": "Athena Schema",
+          "icon": "$(database)"
+        }
+      ]
+    },
+    "views": {
+      "athena-schema-explorer": [
+        {
+          "id": "athena-schema-view",
+          "name": "Databases & Tables"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "athena.refreshSchema",
+          "when": "view == athena-schema-view",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "athena.queryTable",
+          "when": "view == athena-schema-view && viewItem == table",
+          "group": "inline"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Athena Query",
+      "properties": {
+        "athena.query.region": {
+          "type": "string",
+          "default": "us-east-1",
+          "description": "The AWS Region to send the query to."
+        },
+        "athena.query.profile": {
+          "type": "string",
+          "default": "",
+          "description": "For SSO: The named profile from your ~/.aws/config file."
+        },
+        "athena.query.s3OutputLocation": {
+          "type": "string",
+          "description": "The S3 bucket path for query results (e.g., s3://your-bucket/path/)."
+        },
+        "athena.query.database": {
+          "type": "string",
+          "default": "default",
+          "description": "The Athena database to query against."
+        },
+        "athena.query.workgroup": {
+          "type": "string",
+          "default": "primary",
+          "description": "The Athena workgroup to use."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run webpack-base",
+    "compile": "webpack --config webpack.config.js",
+    "webpack-base": "webpack --mode none --config webpack.config.js",
+    "webpack-watch": "webpack --mode none --watch --config webpack.config.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.80.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "@vscode/test-electron": "^2.3.2",
+    "css-loader": "^7.1.2",
+    "eslint": "^8.41.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@aws-sdk/client-athena": "^3.839.0",
+    "@aws-sdk/client-glue": "^3.839.0",
+    "@aws-sdk/credential-providers": "^3.583.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}

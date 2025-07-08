@@ -2,7 +2,7 @@
   "name": "athena-query",
   "displayName": "AWS Athena Query",
   "description": "Run AWS Athena queries directly from VS Code with pagination and CSV export",
-      "version": "0.1.63",
+      "version": "0.1.64",
   "publisher": "dumbokim",
   "repository": {
     "type": "git",

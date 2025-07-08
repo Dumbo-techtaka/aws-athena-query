@@ -176,22 +176,15 @@ export class SchemaExplorerProvider implements vscode.TreeDataProvider<SchemaIte
 
     async getDatabases(): Promise<Database[]> {
         try {
-            console.log('Sending GetDatabasesCommand to AWS Glue...');
             const command = new GetDatabasesCommand({});
             const response = await this.glueClient.send(command);
-            console.log('AWS Glue response:', response);
 
-            const databases = response.DatabaseList?.map(db => ({
+            return response.DatabaseList?.map(db => ({
                 name: db.Name || '',
                 description: db.Description || ''
             })) || [];
-
-            console.log('Mapped databases:', databases);
-            return databases;
         } catch (error: any) {
             console.error('Error fetching databases:', error);
-            console.error('Error name:', error.name);
-            console.error('Error message:', error.message);
 
             // Show specific error messages to help with troubleshooting
             if (error.name === 'CredentialsProviderError' || error.name === 'UnauthorizedOperation') {
@@ -203,7 +196,6 @@ export class SchemaExplorerProvider implements vscode.TreeDataProvider<SchemaIte
             }
 
             // Return mock data if AWS fails
-            console.log('Returning mock data due to error');
             return [
                 { name: 'sample_database', description: 'Sample database for testing' },
                 { name: 'analytics_db', description: 'Analytics database' }

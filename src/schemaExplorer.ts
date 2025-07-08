@@ -16,9 +16,6 @@ export class SchemaExplorerProvider implements vscode.TreeDataProvider<SchemaIte
         const region = config.get<string>('region');
         const profile = config.get<string>('profile');
 
-        // Debug logging
-        console.log('SchemaExplorer Config:', { region, profile });
-
         // Use fromIni if a profile is specified, otherwise let the SDK use its default credential chain.
         const credentials = profile ? fromIni({ profile }) : undefined;
 
@@ -80,9 +77,7 @@ export class SchemaExplorerProvider implements vscode.TreeDataProvider<SchemaIte
     private async getDatabaseItems(): Promise<SchemaItem[]> {
         try {
             if (this.databases.length === 0) {
-                console.log('Fetching databases from AWS Glue...');
                 const databases = await this.getDatabases();
-                console.log('Fetched databases:', databases);
                 this.databases = databases;
             }
 
